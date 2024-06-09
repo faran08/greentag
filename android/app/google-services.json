@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "371882746193",
+    "project_id": "greentag-84735",
+    "storage_bucket": "greentag-84735.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371882746193:android:1c0b47babe1b5562157370",
+        "android_client_info": {
+          "package_name": "com.example.greentag"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPhk_rlosuw7n8nmmfdsqC9xd6oHceyn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

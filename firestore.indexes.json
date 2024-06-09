@@ -1,0 +1,33 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "Documents",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "submissionDate",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "wasteType",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Documents",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "wasteType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "submissionDate",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
