@@ -10,6 +10,9 @@ import 'package:greentag/globals.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:greentag/globals.dart' as global;
 import 'package:path_provider/path_provider.dart';
+import 'package:tflite_flutter/tflite_flutter.dart';
+import 'dart:typed_data';
+import 'package:image/image.dart' as img;
 
 class SubmitPage extends StatefulWidget {
   const SubmitPage({Key? key, required this.wasteType}) : super(key: key);
@@ -22,9 +25,11 @@ class _SubmitPageState extends State<SubmitPage> {
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
   final TextEditingController _remarksController = TextEditingController();
+  late Interpreter _interpreter;
+  late List<String> _labels;
 
   Future<void> _pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     setState(() {
       _image = image;
     });
@@ -154,6 +159,79 @@ class _SubmitPageState extends State<SubmitPage> {
         );
       },
     );
+  }
+
+  // Load TFLite Model
+  Future<void> _loadModel() async {
+    try {
+      // Load the TensorFlow Lite model
+      _interpreter = await Interpreter.fromAsset('assets/model.tflite');
+
+      // Load labels
+      final labelsData =
+          await DefaultAssetBundle.of(context).loadString('assets/labels.txt');
+      _labels =
+          labelsData.split('\n').where((label) => label.isNotEmpty).toList();
+
+      if (kDebugMode) {
+        print('Model and labels loaded successfully');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error loading model: $e');
+      }
+    }
+  }
+
+  Uint8List _preprocessImage(File imageFile, int inputSize) {
+    // Decode the image using the `image` package
+    final rawImage = img.decodeImage(imageFile.readAsBytesSync())!;
+
+    // Resize the image to match the input size of the model
+    final resizedImage =
+        img.copyResize(rawImage, width: inputSize, height: inputSize);
+
+    // Convert the image to a normalized Uint8List
+    final inputBuffer = Uint8List(inputSize * inputSize * 3);
+    int index = 0;
+    for (int y = 0; y < inputSize; y++) {
+      for (int x = 0; x < inputSize; x++) {
+        final pixel = resizedImage.getPixel(x, y);
+        inputBuffer[index++] = ((img.getRed(pixel) - 127.5) / 127.5).toInt();
+        inputBuffer[index++] = ((img.getGreen(pixel) - 127.5) / 127.5).toInt();
+        inputBuffer[index++] = ((img.getBlue(pixel) - 127.5) / 127.5).toInt();
+      }
+    }
+    return inputBuffer;
+  }
+
+  Future<String?> _classifyImage(File imageFile) async {
+    // Get input tensor shape and prepare buffer
+    final inputShape = _interpreter.getInputTensor(0).shape;
+    final inputSize =
+        inputShape[1]; // Typically height or width for square input
+
+    // Preprocess the image
+    final inputBuffer = _preprocessImage(imageFile, inputSize);
+
+    // Prepare output buffer
+    final outputBuffer =
+        List.filled(_labels.length, 0.0).reshape([1, _labels.length]);
+
+    // Run the model
+    _interpreter.run(inputBuffer, outputBuffer);
+
+    // Find the label with the highest probability
+    final maxProbabilityIndex = outputBuffer[0]
+        .indexOf(outputBuffer[0].reduce((a, b) => a > b ? a : b));
+    return _labels[maxProbabilityIndex];
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadModel();
   }
 
   @override
