@@ -36,7 +36,8 @@ class _SubmissionsState extends State<Submissions> {
               'Plastic',
               'Paper',
               'Aluminium',
-              'Electronics'
+              'Electronics',
+              'Organic'
             ] // Add all your waste types here
                 .map((String value) {
               return DropdownMenuItem<String>(

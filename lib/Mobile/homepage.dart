@@ -181,241 +181,20 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 5, 0, 15),
-                child: Text(
-                  'Select GeoTag Green Waste Type',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SubmitPage(
-                                  wasteType: 'Plastic',
-                                )),
-                      );
-                    },
-                    child: Container(
-                      width: getWidth(context, 40),
-                      height: getHeight(context, 20),
-                      padding: const EdgeInsets.all(
-                          0), // Providing spacing inside the container
-                      decoration: BoxDecoration(
-                        color:
-                            containerColor, // Changing the color to light grey
-                        borderRadius:
-                            BorderRadius.circular(15), // Adding rounded edges
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'images/WaterBottle.png', // Specify the path to your image
-                            width: getWidth(context, 20),
-                            height: getHeight(context, 15),
-                          ),
-                          const Text(
-                            "Plastic",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SubmitPage(
-                                  wasteType: 'Paper',
-                                )),
-                      );
-                    },
-                    child: Container(
-                      width: getWidth(context, 40),
-                      height: getHeight(context, 20),
-                      padding: const EdgeInsets.all(
-                          0), // Providing spacing inside the container
-                      decoration: BoxDecoration(
-                        color:
-                            containerColor, // Changing the color to light grey
-                        borderRadius:
-                            BorderRadius.circular(15), // Adding rounded edges
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'images/paper.png', // Specify the path to your image
-                            width: getWidth(context, 20),
-                            height: getHeight(context, 15),
-                          ),
-                          const Text(
-                            "Paper",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SubmitPage(
-                                    wasteType: 'Aluminium',
-                                  )),
-                        );
-                      },
-                      child: Container(
-                        width: getWidth(context, 40),
-                        height: getHeight(context, 20),
-                        padding: const EdgeInsets.all(
-                            0), // Providing spacing inside the container
-                        decoration: BoxDecoration(
-                          color:
-                              containerColor, // Changing the color to light grey
-                          borderRadius:
-                              BorderRadius.circular(15), // Adding rounded edges
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'images/aluminium.png', // Specify the path to your image
-                              width: getWidth(context, 20),
-                              height: getHeight(context, 15),
-                            ),
-                            const Text(
-                              "Aluminium",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SubmitPage(
-                                    wasteType: 'Electronics',
-                                  )),
-                        );
-                      },
-                      child: Container(
-                        width: getWidth(context, 40),
-                        height: getHeight(context, 20),
-                        padding: const EdgeInsets.all(
-                            0), // Providing spacing inside the container
-                        decoration: BoxDecoration(
-                          color:
-                              containerColor, // Changing the color to light grey
-                          borderRadius:
-                              BorderRadius.circular(15), // Adding rounded edges
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'images/electronics.png', // Specify the path to your image
-                              width: getWidth(context, 20),
-                              height: getHeight(context, 15),
-                            ),
-                            const Text(
-                              "Electronics",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                child: Divider(color: Colors.grey),
-              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const Submissions()),
+                    MaterialPageRoute(builder: (context) => const SubmitPage()),
                   );
                 },
                 child: Container(
-                  width: getWidth(context, 50),
-                  height: getHeight(context, 20),
+                  width: getWidth(context, 90),
+                  height: getHeight(context, 15),
                   padding: const EdgeInsets.all(
                       0), // Providing spacing inside the container
                   decoration: BoxDecoration(
@@ -431,20 +210,82 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'images/done.png', // Specify the path to your image
-                        width: getWidth(context, 20),
-                        height: getHeight(context, 15),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Image.asset(
+                          'images/waste.png', // Specify the path to your image
+                          width: getWidth(context, 20),
+                          height: getHeight(context, 15),
+                        ),
                       ),
-                      const Text(
-                        "My Submissions",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          "Report Waste",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                child: Divider(color: Colors.grey),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Submissions()),
+                  );
+                },
+                child: Container(
+                  width: getWidth(context, 90),
+                  height: getHeight(context, 15),
+                  padding: const EdgeInsets.all(
+                      0), // Providing spacing inside the container
+                  decoration: BoxDecoration(
+                    color: containerColor, // Changing the color to light grey
+                    borderRadius:
+                        BorderRadius.circular(15), // Adding rounded edges
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Image.asset(
+                          'images/done.png', // Specify the path to your image
+                          width: getWidth(context, 20),
+                          height: getHeight(context, 15),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Text(
+                          "My Submissions",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

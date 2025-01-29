@@ -61,8 +61,6 @@ class _StartupPageState extends State<StartupPage> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,9 +81,16 @@ class _StartupPageState extends State<StartupPage> {
 
             const SizedBox(height: 5),
             const Text(
-              'A Project By SISAD',
+              'A Project By',
               style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 18.0,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+            const Text(
+              'Mubarak Bin Muhammad Charter School',
+              style: TextStyle(
+                  fontSize: 18.0,
                   color: Colors.green,
                   fontWeight: FontWeight.bold),
             ),
